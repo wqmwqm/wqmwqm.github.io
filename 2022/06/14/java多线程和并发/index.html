@@ -5,11 +5,15 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Java多线程与并发第一章1.1进程和线程 进程的概念：进程就是应⽤程序在内存中分配的空间，也就是正在运行的程序，各个进程之间互不干扰。进程让操作系统的并发成为了可能。 线程的概念：让一个线程执行一个子任务，这样一个进程就包含了多个线程，每个线程负责一个单独的子任务。进程让操作系统的并发性成为了可能，而线程让进程的内部并发成为了可能。  多线程的优点：  进程间的通信比较复杂，而线程间的通信比较简">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java多线程与并发第一章1.1进程和线程 进程的概念：进程就是应⽤程序在内存中分配的空间，也就是正在运行的程序，各个进程之间互不干扰。进程让操作系统的并发成为了可能。 线程的概念：让一个线程执行一个子任务，这样一个进程就包含了多个线程，每个线程负责一个单独的子任务。进程让操作系统的并发性成为了可能，而线程让进程的内部并发成为了可能。  多线程的优点：  进程间的通信比较复杂，而线程间的通信比较简">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-14T02:14:28.180Z">
+<meta property="article:modified_time" content="2022-06-14T02:13:00.253Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,9 +73,7 @@
   </div>
 </div>
 
-        <section id="main">
-  
-    <article id="post-java多线程和并发" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-java多线程和并发" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" class="article-date">
   <time class="post-time" datetime="2022-06-14T02:14:28.180Z" itemprop="datePublished">
@@ -163,117 +165,21 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
     </footer>
   </div>
   
-</article>
-
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-java基础知识第一学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" class="article-date">
-  <time class="post-time" datetime="2022-06-13T08:45:11.435Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">13</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java基础知识第一学"><a href="#Java基础知识第一学" class="headerlink" title="Java基础知识第一学"></a>Java基础知识第一学</h1><h2 id="amp-和-amp-amp-的区别"><a href="#amp-和-amp-amp-的区别" class="headerlink" title="&amp;和&amp;&amp;的区别"></a>&amp;和&amp;&amp;的区别</h2><p>&amp;为逻辑与，&amp;&amp;运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是true 整个表达式的值才是 true。但如果&amp;&amp;左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。（|与||同样如此）</p>
-<h2 id="final-finally-finalize区别"><a href="#final-finally-finalize区别" class="headerlink" title="final finally finalize区别"></a>final finally finalize区别</h2><p>final修饰类说明这个类不能被继承，修饰方法说明方法不能被重写，修饰变量说明变量的<strong>引用</strong>不能被改变，需要注意的是变量的值可以改变。</p>
-<p>finally一般用在try-catch代码块中，其表示在处理异常时，无论是否发生异常，finally代码块一定会被执行。他一般用来存放一些关闭资源的代码。</p>
-<p>finalize是一个方法，属于Object类的一个方法，一般由垃圾回收器来调<br>用，当我们调用System.gc() 方法的时候，由垃圾回收器调用finalize()，回收垃圾，一个对象是否可回收的最后判断。</p>
-<h2 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h2><p>this关键词可以理解为：一个对象引用的指针</p>
-<p>其用法主要由三个方面：</p>
-<ol>
-<li><p>普通的直接引用，this相当于指向对象本身。其只能用在方法内部，表示对“调用方法的那个对象”的引用。</p>
-</li>
-<li><p>在构造器中调用构造器，在一个构造器中调用本类的其他构造器。必须将构造器调用置于最起始处，否则编译器会报错。<br> &#96;&#96;&#96;<br> class Person(){<br> private String name;<br> private int age;<br> public Person(){}<br> public Person(String name) {<br>     this.name &#x3D; name;<br> }<br> public Person(String name, int age) {<br>     this(name);<br>     this.age &#x3D; age;<br> }<br> }<br>3.形参与成员名字重名，用this来区分：</p>
-<p> public Person(String name, int age) {<br> this.name &#x3D; name;<br> this.age &#x3D; age;<br> }</p>
-</li>
-</ol>
-<h2 id="super关键词"><a href="#super关键词" class="headerlink" title="super关键词"></a>super关键词</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" data-id="cl4dj7h1z00028ctz3nh2dnz3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
+  
+    <a href="/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-  
-    <article id="post-hello-world" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/06/13/hello-world/" class="article-date">
-  <time class="post-time" datetime="2022-06-13T02:26:09.429Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">13</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/13/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/hello-world/" data-id="cl4dj7h1w00018ctz4q1z45re" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
 
 </section>
         
