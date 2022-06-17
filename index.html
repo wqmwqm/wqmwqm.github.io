@@ -71,6 +71,72 @@
 
         <section id="main">
   
+    <article id="post-java基础知识第二学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/06/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/" class="article-date">
+  <time class="post-time" datetime="2022-06-17T08:33:57.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">17</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/">笔记</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java基础知识第二学"><a href="#Java基础知识第二学" class="headerlink" title="Java基础知识第二学"></a>Java基础知识第二学</h1><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><p><strong>1.</strong> &#x3D;&#x3D;与equals的区别：</p>
+<ul>
+<li><p>&#x3D;&#x3D;：其主要作用为判断两个对象的地址是否相同（如果是基本的数据类型&#x3D;&#x3D;，则比较的是两个值。如果是两个对象的引用&#x3D;&#x3D;则比较的内存地址是否相同。）</p>
+</li>
+<li><p>equals：他的作用主要用于判断两个对象是否相等。他主要用于两种情景，情景一：类没有覆盖 equals() 方法。则通过 equals() 比较该类的两个对象时，等价于通过“&#x3D;&#x3D;”比较这两个对象。情景二：类覆盖了 equals() 方法。一般，我们都覆盖 equals() 方法来使两个对象的内容相等；若它们的内容相等，则返回 true (即，认为这两个对象相等)。</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">	public class test1 &#123;</span><br><span class="line">	    public static void main(String[] args) &#123;</span><br><span class="line">	        String a = new String(&quot;ab&quot;); // a 为一个引用</span><br><span class="line">	        String b = new String(&quot;ab&quot;); // b为另一个引用,对象的内容一样</span><br><span class="line">	        String aa = &quot;ab&quot;; // 放在常量池中</span><br><span class="line">	        String bb = &quot;ab&quot;; // 从常量池中查找</span><br><span class="line">	        if (aa == bb) // true</span><br><span class="line">	            System.out.println(&quot;aa==bb&quot;);</span><br><span class="line">	        if (a == b) // false，非同一对象</span><br><span class="line">	            System.out.println(&quot;a==b&quot;);</span><br><span class="line">	        if (a.equals(b)) // true</span><br><span class="line">	            System.out.println(&quot;aEQb&quot;);</span><br><span class="line">	        if (42 == 42.0) &#123; // true</span><br><span class="line">	            System.out.println(&quot;true&quot;);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">说明：String中的equals方法是被重写过的，因为object的equals方法是比较的对象的内存地址，而String的equals方法比较的是对象的值。当创建String类型的对象时，虚拟机会在常量池中查找有没有已经存在的值和要创建的值相同的对象，如果有就把它赋给当前引用。如果没有就在常量池中重新创建一个String对象。</span><br><span class="line"></span><br><span class="line">**2.** hashCode和equals</span><br><span class="line"> </span><br><span class="line">- hashCode和equals方法的关系</span><br><span class="line"></span><br><span class="line">	面试官可能会问你：“你重写过 hashcode 和 equals 么，为什么重写equals时必须重写hashCode方法？”</span><br><span class="line"></span><br><span class="line">- hashCode()介绍</span><br><span class="line"></span><br><span class="line">	hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。hashCode() 定义在JDK的Object.java中，这就意味着Java中的任何类都包含有hashCode()函数。</span><br><span class="line">	</span><br><span class="line">	散列表存储的是键值对(key-value)，它的特点是：能根据“键”快速的检索出对应的“值”。这其中就利用到了散列码！（可以快速找到所需要的对象）</span><br><span class="line"></span><br><span class="line">- 为什么要有 hashCode</span><br><span class="line">	</span><br><span class="line">	我们以“HashSet 如何检查重复”为例子来说明为什么要有 hashCode：</span><br><span class="line">	</span><br><span class="line">	当你把对象加入 HashSet 时，HashSet 会先计算对象的 hashcode 值来判断对象加入的位置，同时也会与其他已经加入的对象的 hashcode 值作比较，如果没有相符的hashcode，HashSet会假设对象没有重复出现。但是如果发现有相同 hashcode 值的对象，这时会调用 equals()方法来检查 hashcode 相等的对象是否真的相同。如果两者相同，HashSet 就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。（摘自我的Java启蒙书《Head first java》第二版）。这样我们就大大减少了 equals 的次数，相应就大大提高了执行速度。</span><br><span class="line"> </span><br><span class="line">- hashCode()与equals()的相关规定</span><br><span class="line"></span><br><span class="line">	如果两个对象相等，则hashcode一定也是相同的</span><br><span class="line">	</span><br><span class="line">	两个对象相等，对两个对象分别调用equals方法都返回true</span><br><span class="line">	</span><br><span class="line">	两个对象有相同的hashcode值，它们也不一定是相等的</span><br><span class="line">	</span><br><span class="line">	因此，equals 方法被覆盖过，则 hashCode 方法也必须被覆盖</span><br><span class="line">	</span><br><span class="line">	hashCode() 的默认行为是对堆上的对象产生独特值。如果没有重写 hashCode()，则该 class 的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）</span><br><span class="line"></span><br><span class="line">**3.** 为什么 Java 中只有值传递</span><br><span class="line"></span><br><span class="line">首先回顾一下在程序设计语言中有关将参数传递给方法（或函数）的一些专业术语。按值调用(call by value)表示方法接收的是调用者提供的值，而按引用调用（call by reference)表示方法接收的是调用者提供的变量地址。一个方法可以修改传递引用所对应的变量值，而不能修改传递值调用所对应的变量值。 它用来描述各种程序设计语言（不只是Java)中方法参数传递方式。</span><br><span class="line"></span><br><span class="line">Java程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，也就是说，方法不能修改传递给它的任何参数变量的内容。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  public static void main(String[] args) {<br>  int num1 &#x3D; 10;<br>  int num2 &#x3D; 20;<br><br>  swap(num1, num2);<br><br>  System.out.println(“num1 &#x3D; “ + num1);<br>  System.out.println(“num2 &#x3D; “ + num2);<br>  }</p>
+<p>  public static void swap(int a, int b) {<br>  int temp &#x3D; a;<br>  a &#x3D; b;<br>  b &#x3D; temp;<br><br>  System.out.println(“a &#x3D; “ + a);<br>  System.out.println(“b &#x3D; “ + b);<br>  }<br>  a &#x3D; 20<br>  b &#x3D; 10<br>  num1 &#x3D; 10<br>  num2 &#x3D; 20</p>
+</li>
+</ul>
+<p>Java程序设计语言对对象采用的不是引用调用，实际上，对象引用是按值传递的。</p>
+<p>下面再总结一下Java中方法参数的使用情况：</p>
+<p>一个方法不能修改一个基本数据类型的参数（即数值型或布尔型》</p>
+<p>一个方法可以改变一个对象参数的状态。</p>
+<p>一个方法不能让对象参数引用一个新的对象。</p>
+<hr>
+<p>值传递和引用传递有什么区别<br>值传递：指的是在方法调用时，传递的参数是按值的拷贝传递，传递的是值的拷贝，也就是说传递后就互不相关了。</p>
+<p>引用传递：指的是在方法调用时，传递的参数是按引用进行传递，其实传递的引用的地址，也就是变量所对应的内存空间的地址。传递的是值的引用，也就是说传递前和传递后都指向同一个引用（也就是同一个内存空间）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/06/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/" data-id="cl4i7705z00032ctzbo5877e2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
     <article id="post-java多线程和并发" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" class="article-date">
@@ -157,7 +223,7 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" data-id="cl4i6zb3q0003uwtzbvlm2x6r" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" data-id="cl4i7705y00022ctzd2z46q8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +267,7 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" data-id="cl4i6zb3m0001uwtz33h68gr6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" data-id="cl4i7705t00012ctze2akgdhu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,73 +328,7 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/hello-world/" data-id="cl4i6zb3g0000uwtz17gochmt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java基础知识第二学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/" class="article-date">
-  <time class="post-time" datetime="2019-11-21T05:44:57.000Z" itemprop="datePublished">
-    <span class="post-month">11月</span><br/>
-    <span class="post-day">21</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/">笔记</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java基础知识第二学"><a href="#Java基础知识第二学" class="headerlink" title="Java基础知识第二学"></a>Java基础知识第二学</h1><h2 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h2><p><strong>1.</strong> &#x3D;&#x3D;与equals的区别：</p>
-<ul>
-<li><p>&#x3D;&#x3D;：其主要作用为判断两个对象的地址是否相同（如果是基本的数据类型&#x3D;&#x3D;，则比较的是两个值。如果是两个对象的引用&#x3D;&#x3D;则比较的内存地址是否相同。）</p>
-</li>
-<li><p>equals：他的作用主要用于判断两个对象是否相等。他主要用于两种情景，情景一：类没有覆盖 equals() 方法。则通过 equals() 比较该类的两个对象时，等价于通过“&#x3D;&#x3D;”比较这两个对象。情景二：类覆盖了 equals() 方法。一般，我们都覆盖 equals() 方法来使两个对象的内容相等；若它们的内容相等，则返回 true (即，认为这两个对象相等)。</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">	public class test1 &#123;</span><br><span class="line">	    public static void main(String[] args) &#123;</span><br><span class="line">	        String a = new String(&quot;ab&quot;); // a 为一个引用</span><br><span class="line">	        String b = new String(&quot;ab&quot;); // b为另一个引用,对象的内容一样</span><br><span class="line">	        String aa = &quot;ab&quot;; // 放在常量池中</span><br><span class="line">	        String bb = &quot;ab&quot;; // 从常量池中查找</span><br><span class="line">	        if (aa == bb) // true</span><br><span class="line">	            System.out.println(&quot;aa==bb&quot;);</span><br><span class="line">	        if (a == b) // false，非同一对象</span><br><span class="line">	            System.out.println(&quot;a==b&quot;);</span><br><span class="line">	        if (a.equals(b)) // true</span><br><span class="line">	            System.out.println(&quot;aEQb&quot;);</span><br><span class="line">	        if (42 == 42.0) &#123; // true</span><br><span class="line">	            System.out.println(&quot;true&quot;);</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">说明：String中的equals方法是被重写过的，因为object的equals方法是比较的对象的内存地址，而String的equals方法比较的是对象的值。当创建String类型的对象时，虚拟机会在常量池中查找有没有已经存在的值和要创建的值相同的对象，如果有就把它赋给当前引用。如果没有就在常量池中重新创建一个String对象。</span><br><span class="line"></span><br><span class="line">**2.** hashCode和equals</span><br><span class="line"> </span><br><span class="line">- hashCode和equals方法的关系</span><br><span class="line"></span><br><span class="line">	面试官可能会问你：“你重写过 hashcode 和 equals 么，为什么重写equals时必须重写hashCode方法？”</span><br><span class="line"></span><br><span class="line">- hashCode()介绍</span><br><span class="line"></span><br><span class="line">	hashCode() 的作用是获取哈希码，也称为散列码；它实际上是返回一个int整数。这个哈希码的作用是确定该对象在哈希表中的索引位置。hashCode() 定义在JDK的Object.java中，这就意味着Java中的任何类都包含有hashCode()函数。</span><br><span class="line">	</span><br><span class="line">	散列表存储的是键值对(key-value)，它的特点是：能根据“键”快速的检索出对应的“值”。这其中就利用到了散列码！（可以快速找到所需要的对象）</span><br><span class="line"></span><br><span class="line">- 为什么要有 hashCode</span><br><span class="line">	</span><br><span class="line">	我们以“HashSet 如何检查重复”为例子来说明为什么要有 hashCode：</span><br><span class="line">	</span><br><span class="line">	当你把对象加入 HashSet 时，HashSet 会先计算对象的 hashcode 值来判断对象加入的位置，同时也会与其他已经加入的对象的 hashcode 值作比较，如果没有相符的hashcode，HashSet会假设对象没有重复出现。但是如果发现有相同 hashcode 值的对象，这时会调用 equals()方法来检查 hashcode 相等的对象是否真的相同。如果两者相同，HashSet 就不会让其加入操作成功。如果不同的话，就会重新散列到其他位置。（摘自我的Java启蒙书《Head first java》第二版）。这样我们就大大减少了 equals 的次数，相应就大大提高了执行速度。</span><br><span class="line"> </span><br><span class="line">- hashCode()与equals()的相关规定</span><br><span class="line"></span><br><span class="line">	如果两个对象相等，则hashcode一定也是相同的</span><br><span class="line">	</span><br><span class="line">	两个对象相等，对两个对象分别调用equals方法都返回true</span><br><span class="line">	</span><br><span class="line">	两个对象有相同的hashcode值，它们也不一定是相等的</span><br><span class="line">	</span><br><span class="line">	因此，equals 方法被覆盖过，则 hashCode 方法也必须被覆盖</span><br><span class="line">	</span><br><span class="line">	hashCode() 的默认行为是对堆上的对象产生独特值。如果没有重写 hashCode()，则该 class 的两个对象无论如何都不会相等（即使这两个对象指向相同的数据）</span><br><span class="line"></span><br><span class="line">**3.** 为什么 Java 中只有值传递</span><br><span class="line"></span><br><span class="line">首先回顾一下在程序设计语言中有关将参数传递给方法（或函数）的一些专业术语。按值调用(call by value)表示方法接收的是调用者提供的值，而按引用调用（call by reference)表示方法接收的是调用者提供的变量地址。一个方法可以修改传递引用所对应的变量值，而不能修改传递值调用所对应的变量值。 它用来描述各种程序设计语言（不只是Java)中方法参数传递方式。</span><br><span class="line"></span><br><span class="line">Java程序设计语言总是采用按值调用。也就是说，方法得到的是所有参数值的一个拷贝，也就是说，方法不能修改传递给它的任何参数变量的内容。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>  public static void main(String[] args) {<br>  int num1 &#x3D; 10;<br>  int num2 &#x3D; 20;<br><br>  swap(num1, num2);<br><br>  System.out.println(“num1 &#x3D; “ + num1);<br>  System.out.println(“num2 &#x3D; “ + num2);<br>  }</p>
-<p>  public static void swap(int a, int b) {<br>  int temp &#x3D; a;<br>  a &#x3D; b;<br>  b &#x3D; temp;<br><br>  System.out.println(“a &#x3D; “ + a);<br>  System.out.println(“b &#x3D; “ + b);<br>  }<br>  a &#x3D; 20<br>  b &#x3D; 10<br>  num1 &#x3D; 10<br>  num2 &#x3D; 20</p>
-</li>
-</ul>
-<p>Java程序设计语言对对象采用的不是引用调用，实际上，对象引用是按值传递的。</p>
-<p>下面再总结一下Java中方法参数的使用情况：</p>
-<p>一个方法不能修改一个基本数据类型的参数（即数值型或布尔型》</p>
-<p>一个方法可以改变一个对象参数的状态。</p>
-<p>一个方法不能让对象参数引用一个新的对象。</p>
-<hr>
-<p>值传递和引用传递有什么区别<br>值传递：指的是在方法调用时，传递的参数是按值的拷贝传递，传递的是值的拷贝，也就是说传递后就互不相关了。</p>
-<p>引用传递：指的是在方法调用时，传递的参数是按引用进行传递，其实传递的引用的地址，也就是变量所对应的内存空间的地址。传递的是值的引用，也就是说传递前和传递后都指向同一个引用（也就是同一个内存空间）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/" data-id="cl4i6zb3o0002uwtz10u7dw2p" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/06/13/hello-world/" data-id="cl4i7705m00002ctz0b481hep" class="article-share-link">Share</a>
       
       
     </footer>
