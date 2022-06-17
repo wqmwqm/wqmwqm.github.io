@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Java基础知识第二学第一部分1. &#x3D;&#x3D;与equals的区别：  &#x3D;&#x3D;：其主要作用为判断两个对象的地址是否相同（如果是基本的数据类型&#x3D;&#x3D;，则比较的是两个值。如果是两个对象的引用&#x3D;&#x3D;则比较的内存地址是否相同。）  equals：他的作用主要用于判断两个对象是否相等。他主要用于两种情景，情景一：类没有覆盖 equals()">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笔记">
+<meta property="og:url" content="http://example.com/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java基础知识第二学第一部分1. &#x3D;&#x3D;与equals的区别：  &#x3D;&#x3D;：其主要作用为判断两个对象的地址是否相同（如果是基本的数据类型&#x3D;&#x3D;，则比较的是两个值。如果是两个对象的引用&#x3D;&#x3D;则比较的内存地址是否相同。）  equals：他的作用主要用于判断两个对象是否相等。他主要用于两种情景，情景一：类没有覆盖 equals()">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-21T05:44:57.000Z">
+<meta property="article:modified_time" content="2022-06-17T08:30:41.087Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,212 +73,7 @@
   </div>
 </div>
 
-        <section id="main">
-  
-    <article id="post-java多线程和并发" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" class="article-date">
-  <time class="post-time" datetime="2022-06-14T02:14:28.180Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">14</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java多线程与并发"><a href="#Java多线程与并发" class="headerlink" title="Java多线程与并发"></a>Java多线程与并发</h1><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="1-1进程和线程"><a href="#1-1进程和线程" class="headerlink" title="1.1进程和线程"></a>1.1进程和线程</h3><hr>
-<p>进程的概念：进程就是应⽤程序在内存中分配的空间，也就是正在运行的程序，各个进程之间互不干扰。<br>进程让操作系统的并发成为了可能。</p>
-<p>线程的概念：让一个线程执行一个子任务，这样一个进程就包含了多个线程，每个线程负责一个单独的子任务。进程让操作系统的并发性成为了可能，而线程让进程的内部并发成为了可能。</p>
-<hr>
-<p>多线程的优点：</p>
-<ul>
-<li>进程间的通信比较复杂，而线程间的通信比较简单，通常情况下，我们需要使用共享资源，这些资源在线程间的通信比较容易。 </li>
-<li>进程是重量级的，而线程是轻量级的，故多线程方式的系统开销更小。</li>
-</ul>
-<hr>
-<p>进程和线程的区别：</p>
-<p>进程是一个独立的运行环境，而线程是在进程中执行的一个任务。他们两个本质的区别是是否单独占有内存地址空间及其它系统资源（比如I&#x2F;O）：</p>
-<ul>
-<li>进程单独占有一定的内存地址空间，所以进程间存在内存隔离，数据是分开的，数据共享复杂但是同步简单，各个进程之间互不⼲扰；⽽线程共享所属进 程占有的内存地址空间和资源，数据共享简单，但是同步复杂。</li>
-<li>进程单独占有一定的内存地址空间，一个进程出现问题不会影响其他进程，不影响主程序的稳定性，可靠性高；一个线程崩溃可能影响整个程序的稳定性， 可靠性较低。 </li>
-<li>进程单独占有一定的内存地址空间，进程的创建和销毁不仅需要保存寄存器和栈信息，还需要资源的分配回收以及页调度，开销较大；线程只需要保存寄存器和栈信息，开销较小。 另外一个重要区别是，进程是操作系统进⾏资源分配的基本单位，而线程是操作系统进⾏调度的基本单位，即CPU分配时间的单位。<h3 id="1-2-上下文切换"><a href="#1-2-上下文切换" class="headerlink" title="1.2 上下文切换"></a>1.2 上下文切换</h3></li>
-</ul>
-<hr>
-<p>上下文切换的概念：上下文切换（有时也称做进程切换或任务切换）是指 CPU 从一个进程（或线程）切换到另一个进程（或线程）。上下文是指某一时间点 CPU 寄存器和程序计数器的内容。</p>
-<h2 id="第二章-Java多线程入门类和接口"><a href="#第二章-Java多线程入门类和接口" class="headerlink" title="第二章 Java多线程入门类和接口"></a>第二章 Java多线程入门类和接口</h2><hr>
-<h3 id="2-1-Thread类和Runnable接⼝"><a href="#2-1-Thread类和Runnable接⼝" class="headerlink" title="2.1 Thread类和Runnable接⼝"></a>2.1 Thread类和Runnable接⼝</h3><hr>
-<p>首先，我们需要有一个“线程”类。JDK提供了 Thread 类和 Runnalble 接⼝来让我们实现自己的“线程”类。 继承 Thread 类，并重写 run方法； 实现 Runnable 接⼝的 run 方法；</p>
-<ul>
-<li>首先是继承 Thread 类：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">	public class Demo &#123;</span><br><span class="line">	 public static class MyThread extends Thread &#123;</span><br><span class="line">		 @Override</span><br><span class="line">		 public void run() &#123;</span><br><span class="line">		 System.out.println(&quot;MyThread&quot;);</span><br><span class="line">		 &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">	 public static void main(String[] args) &#123;</span><br><span class="line">		 Thread myThread = new MyThread();</span><br><span class="line">		 myThread.start();</span><br><span class="line">		 &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">- 接着我们来看一下Runnable接⼝(JDK 1.8 +)：</span><br></pre></td></tr></table></figure>
-  public class Demo {<br>   public static class MyThread implements Runnable {<br>   @Override<br>   public void run() {<br>   System.out.println(“MyThread”);<br>   }<br>   }<br>   public static void main(String[] args) {<br>       new MyThread().start();<br>       &#x2F;&#x2F; Java 8 函数式编程，可以省略MyThread类<br>       new Thread(() -&gt; {<br>       System.out.println(“Java 8 匿名内部类”);<br>       }).start();<br>   }<br>  }<h3 id="2-2-Thread源码"><a href="#2-2-Thread源码" class="headerlink" title="2.2 Thread源码"></a>2.2 Thread源码</h3></li>
-</ul>
-<hr>
-<p>查看 Thread 类的构造方法，发现其实是简单调用一个私有的 init 方法来实现初始化。 init 的方法签名：</p>
-<pre><code>// Thread类源码
-// 片段1 - init⽅法
-private void init(ThreadGroup g, Runnable target, String name,
- long stackSize, AccessControlContext acc,
- boolean inheritThreadLocals)
-
-// 片段2 - 构造函数调用init⽅法
-public Thread(Runnable target) &#123;
- 	init(null, target, &quot;Thread-&quot; + nextThreadNum(), 0);
-&#125;
-
-// 片段3 - 使⽤在init方法里初始化AccessControlContext类型的私有属性
-this.inheritedAccessControlContext = 
- 	acc != null ? acc : AccessController.getContext();
-
-// 片段4 - 两个对用于⽀持ThreadLocal的私有属性
-ThreadLocal.ThreadLocalMap threadLocals = null;
-ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
-</code></pre>
-<ul>
-<li><p>g：线程组，指定这个线程是在哪个线程组下；</p>
-</li>
-<li><p>target：指定要执行的任务；</p>
-</li>
-<li><p>name：线程的名字，多个线程的名字是可以重复的。如果不指定名字，见片段2；</p>
-</li>
-<li><p>acc：见片段3，用于初始化私有变量 inheritedAccessControlContext 。</p>
-</li>
-<li><p>inheritThreadLocals：可继承的 ThreadLocal ，见片段4， Thread 类里面有两个私有属性来支持 ThreadLocal ，后面的章节介绍ThreadLocal 的概念。</p>
-<h4 id="2-2-1-Thread类的常用方法"><a href="#2-2-1-Thread类的常用方法" class="headerlink" title="2.2.1 Thread类的常用方法"></a>2.2.1 Thread类的常用方法</h4><ul>
-<li>currentThread()：静态方法，返回对当前正在执⾏的线程对象的引用；</li>
-<li>start()：开始执行线程的方法，java虚拟机会调用线程内的run()方法；</li>
-<li>yield()：yield在英语里有放弃的意思，同样，这里的yield()指的是当前线程愿 意让出对当前处理器的占用。这里需要注意的是，就算当前线程调用了yield()方法，程序在调度的时候，也还有可能继续运行这个线程的；</li>
-<li>sleep()：静态方法，使当前线程睡眠一段时间；</li>
-<li>join()：使当前线程等待另一个线程执行完毕之后再继续执行，内部调用的是</li>
-<li>Object类的wait方法实现的；</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/14/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%B9%B6%E5%8F%91/" data-id="cl4i6zb3q0003uwtzbvlm2x6r" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java基础知识第一学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" class="article-date">
-  <time class="post-time" datetime="2022-06-13T08:45:11.435Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">13</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java基础知识第一学"><a href="#Java基础知识第一学" class="headerlink" title="Java基础知识第一学"></a>Java基础知识第一学</h1><h2 id="amp-和-amp-amp-的区别"><a href="#amp-和-amp-amp-的区别" class="headerlink" title="&amp;和&amp;&amp;的区别"></a>&amp;和&amp;&amp;的区别</h2><p>&amp;为逻辑与，&amp;&amp;运算符是短路与运算。逻辑与跟短路与的差别是非常巨大的，虽然二者都要求运算符左右两端的布尔值都是true 整个表达式的值才是 true。但如果&amp;&amp;左边的表达式的值是 false，右边的表达式会被直接短路掉，不会进行运算。（|与||同样如此）</p>
-<h2 id="final-finally-finalize区别"><a href="#final-finally-finalize区别" class="headerlink" title="final finally finalize区别"></a>final finally finalize区别</h2><p>final修饰类说明这个类不能被继承，修饰方法说明方法不能被重写，修饰变量说明变量的<strong>引用</strong>不能被改变，需要注意的是变量的值可以改变。</p>
-<p>finally一般用在try-catch代码块中，其表示在处理异常时，无论是否发生异常，finally代码块一定会被执行。他一般用来存放一些关闭资源的代码。</p>
-<p>finalize是一个方法，属于Object类的一个方法，一般由垃圾回收器来调<br>用，当我们调用System.gc() 方法的时候，由垃圾回收器调用finalize()，回收垃圾，一个对象是否可回收的最后判断。</p>
-<h2 id="this关键词"><a href="#this关键词" class="headerlink" title="this关键词"></a>this关键词</h2><p>this关键词可以理解为：一个对象引用的指针</p>
-<p>其用法主要由三个方面：</p>
-<ol>
-<li><p>普通的直接引用，this相当于指向对象本身。其只能用在方法内部，表示对“调用方法的那个对象”的引用。</p>
-</li>
-<li><p>在构造器中调用构造器，在一个构造器中调用本类的其他构造器。必须将构造器调用置于最起始处，否则编译器会报错。<br> &#96;&#96;&#96;<br> class Person(){<br> private String name;<br> private int age;<br> public Person(){}<br> public Person(String name) {<br>     this.name &#x3D; name;<br> }<br> public Person(String name, int age) {<br>     this(name);<br>     this.age &#x3D; age;<br> }<br> }<br>3.形参与成员名字重名，用this来区分：</p>
-<p> public Person(String name, int age) {<br> this.name &#x3D; name;<br> this.age &#x3D; age;<br> }</p>
-</li>
-</ol>
-<h2 id="super关键词"><a href="#super关键词" class="headerlink" title="super关键词"></a>super关键词</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%B8%80%E5%AD%A6/" data-id="cl4i6zb3m0001uwtz33h68gr6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-hello-world" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/06/13/hello-world/" class="article-date">
-  <time class="post-time" datetime="2022-06-13T02:26:09.429Z" itemprop="datePublished">
-    <span class="post-month">6月</span><br/>
-    <span class="post-day">13</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/06/13/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/06/13/hello-world/" data-id="cl4i6zb3g0000uwtz17gochmt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-  
-    <article id="post-java基础知识第二学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-java基础知识第二学" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/" class="article-date">
   <time class="post-time" datetime="2019-11-21T05:44:57.000Z" itemprop="datePublished">
@@ -290,8 +89,8 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AC%AC%E4%BA%8C%E5%AD%A6/">笔记</a>
+    <h1 class="article-title" itemprop="name">
+      笔记
     </h1>
   
 
@@ -334,12 +133,25 @@ ThreadLocal.ThreadLocalMap inheritableThreadLocals = null;
     </footer>
   </div>
   
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/13/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
 
 
-
-
-  
 
 </section>
         
